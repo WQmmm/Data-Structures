@@ -1,4 +1,4 @@
-////////linklist.h/////////////
+////////linklist.cpp/////////////
 #include"stdio.h"
 #include"linklist.h"
 
