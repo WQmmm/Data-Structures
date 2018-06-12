@@ -5,8 +5,8 @@
 
 Information::Information()             //构造函数
 {
-	head=new Node;					 //为头结点申请空间
-	head->next=NULL;	             //头结点置空
+	head=new Node;           //为头结点申请空间
+	head->next=NULL;          //头结点置空
 }
 
 Information::~Information()            //析构函数
@@ -24,7 +24,7 @@ Information::~Information()            //析构函数
 
 void Information::creatlist()       //初始化函数
 {
-	Node *p,*q;			    		//定义指针p
+	Node *p,*q;           //定义指针p
 	int n;
 	printf("请输入要存的书籍的数量:");
 	scanf("%d",&n);
@@ -42,7 +42,6 @@ void Information::creatlist()       //初始化函数
 		p->next=q;
 		p=q;
 	}
-
 }
 
 void Information::insert()        //插入函数
@@ -56,7 +55,7 @@ int Information::search()        //查找函数
 	char book[SIZE];
 	p=head;
 	printf("请输入要查找的书名或作者名:");
-    scanf("%s",&book);
+        scanf("%s",&book);
 	while(p!=NULL)
 	{
 		if(strcmp(book,p->book_name)==0 || strcmp(book,p->author_name)==0)                      //查找成功
