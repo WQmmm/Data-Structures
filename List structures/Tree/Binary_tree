@@ -1,1 +1,35 @@
+/**************利用先序遍历和中序遍历构造二叉树*********************/
+//先序序列ABDGCEF
+//中序序列DGBAECF
 
+#include<iostream>
+#define element_type char
+using namespace std;
+
+typedef struct Bnode{
+	element_type data;
+	Bnode *Rson,*Lson;
+}Bnode,*Bptr;
+
+Bptr create(char a[],char b[],int i,int j,int s,int t)
+{
+	if(i > j)
+		return NULL;
+	Bptr p = new Bnode;
+	p->data = a[i];
+	int k = s;
+	while((k <= t)&&(b[k] != a[i])) k++;
+	p->Lson = create(a,b,i+1,i+k-s,s,k-1);
+	p->Rson = create(a,b,i+k-s+1,j,k+1,t);
+	return p;
+}
+
+int main()
+{
+	char a[] = {'A','B','D','G','C','E','F'};
+	char b[] = {'D','G','B','A','E','C','F'};
+	Bptr root;
+	root = create(a,b,0,6,0,6);
+	cout<<root->Rson->data<<endl;
+	return 0;
+}
