@@ -1,0 +1,65 @@
+
+/////////////图的存储(邻接表)/////////////////
+#include<iostream>
+using namespace std;
+#define Vname_type char
+
+//边节点结构类型定义
+typedef struct edge_node{	
+	int adjacent;                //邻接点编号域
+	struct edge_node *next;      //指向下一个边节点的指针
+} edge_node, *Eptr;
+
+//邻接链表的表头节点（顶点节点）结构
+typedef struct {
+	Vname_type name;             //顶点名称
+	Eptr firstedge;              //邻接表首指针
+} hnode;
+
+int main()
+{
+	int n;
+	int node; 
+	Eptr q;
+	cin>>n;
+	hnode *L = new hnode[n];
+	for(int i = 0; i < n; i++)            //构造邻接链表，并将边节点连接到邻接表
+	{
+		cin>>L[i].name;          
+		L[i].firstedge = NULL;
+		while(1)
+		{
+			cin>>node;
+			if(node == -1)                 //-1为结束条件
+				break;
+			Eptr p = new edge_node;
+			p->adjacent = node;  
+			if(L[i].firstedge == NULL)     //判断是否为第一个节点，如果是，将其连接到邻接表
+			{
+				L[i].firstedge = p;
+				q = p;
+			}
+			else                           //否则，连接到上一个节点处
+			{
+				q->next = p;
+				q = q->next;
+			}
+		}   
+		q->next = NULL;                    //需将最后节点的next设置(NULL)
+	}
+	/*   输出测试
+	for(int j = 0; j < n; j++)
+	{
+		cout<<L[j].name<<endl;
+		Eptr l;
+		l = L[j].firstedge;
+		while(l != NULL)
+		{
+			cout<<l->adjacent<<"  ";
+			l = l->next;
+		}
+		cout<<endl;
+	}
+	*/
+	return 0;
+}
