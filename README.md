@@ -1,2 +1,2 @@
 # Data-Structures
-List structure,Tree structure and Graph structure
+List , Queue , Stack , Tree and Graph.
