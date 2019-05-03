@@ -1,16 +1,23 @@
-#include"Binary_Tree.h"
+#include<iostream>
+#define element_type char
+using namespace std;
 
-int main()
-{
-	char a[] = {'A','B','D','G','C','E','F'};
-	char b[] = {'D','G','B','A','E','C','F'};
-	Bptr root;
-	root = create(a,b,0,6,0,6);
-	cout<<"先序遍历: ";
-	preOrder(root);
-	cout<<"中序遍历: ";
-	inOrder(root);
-	cout<<"后序遍历: ";
-	postOrder(root);
-	return 0;
-}
+typedef struct Bnode{
+	element_type data;
+	Bnode *Rson,*Lson;
+}Bnode,*Bptr;
+
+//利用先序序列和中序序列构造二叉树
+Bptr create(element_type a[], element_type b[], int i, int j, int s, int t);
+
+//访问根节点
+void visit(Bptr p);
+
+//先序遍历
+void preOrder(Bptr p);
+
+//中序遍历
+void inOrder(Bptr p);
+
+//后序遍历
+void postOrder(Bptr p);
