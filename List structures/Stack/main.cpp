@@ -1,4 +1,3 @@
-
 /////////main.cpp/////////
 #include<stdio.h>
 #include"Cstack.h"
@@ -51,3 +50,5 @@ int main()
 				printf("出入有误！请重新输入！\n");
 		}
 	}
+    return 0;
+}
